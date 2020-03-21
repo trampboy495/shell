@@ -14,4 +14,16 @@ Fulltime=8
 Wageperhr=20
 dailyWage=$(($Fulltime*$Wageperhr))
 Parttime=4
+isPartTime=1
+isFulltime=0
+checkemp=$((RANDOM % 2))
+case $checkemp in
+ $isPartTime) empSalary=$(($Parttime*$Wageperhr))
+             ;;
+ $isFulltime) empSalary=$(($Fulltime*$Wageperhr))
+             ;;
+ *) empSalary=0
+             ;;
+esac
 
+  
