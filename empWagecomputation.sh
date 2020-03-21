@@ -27,4 +27,20 @@ case $checkemp in
 esac
 Workingdays=20
 TotalSalary=$(($empSalary*$Workingdays))
-  
+totalemphr=0
+totalworkingdays=0
+while [ $totalemphr -lt 100 -a $totalworkingdays -lt 20 ]
+do
+((totalWorkingdays++))
+checkemp=$((RANDOM % 2))
+case $checkemp in
+ $isPartTime) emphrs=4
+             ;;
+ $isFulltime) emphrs=8
+             ;;
+ *) emphrs=0
+             ;;
+esac
+totalemphr=$(($totalemphr + $emphrs))
+done
+TotalSalary=$(($totalemphr*$Wageperhr))  
