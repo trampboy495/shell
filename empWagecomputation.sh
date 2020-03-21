@@ -25,5 +25,6 @@ case $checkemp in
  *) empSalary=0
              ;;
 esac
-
+Workingdays=20
+TotalSalary=$(($empSalary*$Workingdays))
   
