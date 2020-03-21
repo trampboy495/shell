@@ -29,11 +29,8 @@ Workingdays=20
 TotalSalary=$(($empSalary*$Workingdays))
 totalemphr=0
 totalworkingdays=0
-while [ $totalemphr -lt 100 -a $totalworkingdays -lt 20 ]
-do
-((totalWorkingdays++))
-checkemp=$((RANDOM % 2))
-case $checkemp in
+functiongethour () {
+case $1 in
  $isPartTime) emphrs=4
              ;;
  $isFulltime) emphrs=8
@@ -41,6 +38,12 @@ case $checkemp in
  *) emphrs=0
              ;;
 esac
+echo $emphrs
+}
+while [ $totalemphr -lt 100 -a $totalworkingdays -lt 20 ]
+do
+((totalWorkingdays++))
+emphrs="$( functiongethour $((RANDOM % 2)) )" 
 totalemphr=$(($totalemphr + $emphrs))
 done
 TotalSalary=$(($totalemphr*$Wageperhr))  
