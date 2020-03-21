@@ -47,3 +47,5 @@ emphrs="$( functiongethour $((RANDOM % 2)) )"
 totalemphr=$(($totalemphr + $emphrs))
 done
 TotalSalary=$(($totalemphr*$Wageperhr))  
+empDaliywage[0]=$TotalSalary
+echo "employee daily wage is ${empDailywage[@]}"
