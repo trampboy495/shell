@@ -9,4 +9,8 @@ then
 echo "Employee is present"
 else
 echo "Employee is not present"
-fi 
+fi
+Fulltime=8
+Wageperhr=20
+dailyWage=$(($Fulltime*$Wageperhr))
+echo $dailyWage 
