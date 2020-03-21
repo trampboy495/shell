@@ -13,4 +13,5 @@ fi
 Fulltime=8
 Wageperhr=20
 dailyWage=$(($Fulltime*$Wageperhr))
-echo $dailyWage 
+Parttime=4
+
