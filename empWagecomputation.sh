@@ -48,4 +48,9 @@ totalemphr=$(($totalemphr + $emphrs))
 done
 TotalSalary=$(($totalemphr*$Wageperhr))  
 empDaliywage[0]=$TotalSalary
-echo "employee daily wage is ${empDailywage[@]}"
+empDaliywage[1]=$dailyWage
+echo "employee Total wage and daily wage is ${empDailywage[@]}"
+declare -A empdailywage
+empdailywage=([1]=$TotalSalary [2]=$dailywage [3]=$totalWorkingdays)
+echo "employee Total wage daily wage and days is ${empdailywage[@]}"
+
