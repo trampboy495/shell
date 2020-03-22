@@ -56,7 +56,7 @@ r2=$((RANDOM%2))
 r3=$((RANDOM%2))
 if [ $r -eq 1 -a  $r2 -eq 1 -a $r3 -eq 1 ]
 then
-coinDoublet[$i]="HHH"
+coinTriplet[$i]="HHH"
 noOfheads=$(($noOfheads+1))
 elif [ $r -eq 0 -a  $r2 -eq 0 -a $r3 -eq 0 ]
 then
@@ -83,3 +83,49 @@ fi
 ((i++))
 done
 HeadpercentageTriplet=$(($noOfheads*10))
+n=${#coinSinglet[@]}
+for (( i=1; i< $n; i++ ))                              #loop for sorting the array
+do
+temp=${coinSinglet[$i]}
+j=$(($i-1))
+while [ "$j" -ge 0 -a "${coinSinglet[$j]}" \> "$temp" ]
+do
+coinSinglet["$(($j+1))"]=${coinSinglet[$j]}
+((j--))
+done
+coinSinglet["$(($j+1))"]=$temp
+done
+n=${#coinDoublet[@]}
+for (( i=1; i< $n; i++ ))                              #loop for sorting the array
+do
+temp=${coinDoublet[$i]}
+j=$(($i-1))
+while [ "$j" -ge 0 -a "${coinDoublet[$j]}" \> "$temp" ]
+do
+coinDoublet["$(($j+1))"]=${coinDoublet[$j]}
+((j--))
+done
+coinDoublet["$(($j+1))"]=$temp
+done
+echo ${coinTriplet[@]}
+n=${#coinTriplet[@]}
+for (( i=1; i< $n; i++ ))                              #loop for sorting the array
+do
+temp=${coinTriplet[$i]}
+j=$(($i-1))
+while [ "$j" -ge 0 -a "${coinTriplet[$j]}" \> "$temp" ]
+do
+coinTriplet["$(($j+1))"]=${coinTriplet[$j]}
+((j--))
+done
+coinTriplet["$(($j+1))"]=$temp
+done
+if [ $HeadpercentageSinglet -gt $HeadpercentageDoublet -a  $HeadpercentageSinglet -gt $HeadpercentageTriplet ]
+then
+echo "singlet combination wins"
+elif [ $HeadpercentageDoublet -gt $HeadpercentageSinglet -a $HeadpercentageDoublet -gt $HeadpercentageTriplet ]
+then
+echo " doublet combination win"
+else
+echo " triplet combination win"
+fi
