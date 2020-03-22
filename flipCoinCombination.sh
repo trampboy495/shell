@@ -46,4 +46,40 @@ fi
 ((i++))
 done
 HeadpercentageDoublet=$(($noOfheads*10))
-
+noOfheads=0
+noOftails=0
+i=0
+while [ $i -lt 10 ]
+do
+r=$((RANDOM%2))
+r2=$((RANDOM%2))
+r3=$((RANDOM%2))
+if [ $r -eq 1 -a  $r2 -eq 1 -a $r3 -eq 1 ]
+then
+coinDoublet[$i]="HHH"
+noOfheads=$(($noOfheads+1))
+elif [ $r -eq 0 -a  $r2 -eq 0 -a $r3 -eq 0 ]
+then
+coinTriplet[$i]="TTT"
+((noOftails++))
+elif [ $r -eq 0 -a  $r2 -eq 0 -a $r3 -eq 1 ]
+then
+coinTriplet[$i]="TTH"
+elif [ $r -eq 0 -a  $r2 -eq 1 -a $r3 -eq 1 ]
+then
+coinTriplet[$i]="THH"
+elif [ $r -eq 1 -a  $r2 -eq 1 -a $r3 -eq 0 ]
+then
+coinTriplet[$i]="HHT"
+elif [ $r -eq 1 -a  $r2 -eq 0 -a $r3 -eq 0 ]
+then
+coinTriplet[$i]="HTT"
+elif [ $r -eq 1 -a  $r2 -eq 0 -a $r3 -eq 1 ]
+then
+coinTriplet[$i]="HTH"
+else
+coinTriplet[$i]="THT"
+fi
+((i++))
+done
+HeadpercentageTriplet=$(($noOfheads*10))
