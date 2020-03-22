@@ -9,5 +9,5 @@ read c
 com1=$((a+b*c))
 com2=$((a*b+c))
 com3=$((c+a/b))
-
+com4=$((a%b+c))
 
