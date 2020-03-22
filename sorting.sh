@@ -17,4 +17,19 @@ for i in ${!computation[@]}
 do
 array[ ((counter++)) ]=${computation[$i]}
 done
-
+n=${#array[@]}
+for (( i=1; i< $n; i++ ))
+do
+temp=${array[i]}
+j=$(($i-1))
+while [ $j -ge 0 -a ${array[j]} -gt $temp ]
+do
+array[ ($j+1) ]=${array[j]}
+((j--))
+done
+array[($j+1)]=$temp
+done
+for (( i=$(($n-1)); i>=0; i-- ))
+do
+echo ${array[i]}
+done
