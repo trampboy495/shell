@@ -10,4 +10,6 @@ com1=$((a+b*c))
 com2=$((a*b+c))
 com3=$((c+a/b))
 com4=$((a%b+c))
+declare -A computation
+computation=([1]=$com1 [2]=$com2 [3]=$com3 [4]=$com4)
 
