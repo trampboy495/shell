@@ -16,6 +16,7 @@ dailyWage=$(($Fulltime*$Wageperhr))
 Parttime=4
 isPartTime=1
 isFulltime=0
+declare -A empdailywage
 checkemp=$((RANDOM % 2))
 case $checkemp in
  $isPartTime) empSalary=$(($Parttime*$Wageperhr))
@@ -45,12 +46,9 @@ do
 ((totalWorkingdays++))
 emphrs="$( functiongethour $((RANDOM % 2)) )" 
 totalemphr=$(($totalemphr + $emphrs))
+empdailywage[ "Day "$totalWorkingdays" " ]=$(($emphrs*$Wageperhr))
 done
 TotalSalary=$(($totalemphr*$Wageperhr))  
-empDaliywage[0]=$TotalSalary
-empDaliywage[1]=$dailyWage
-echo "employee Total wage and daily wage is ${empDailywage[@]}"
-declare -A empdailywage
-empdailywage=([1]=$TotalSalary [2]=$dailywage [3]=$totalWorkingdays)
-echo "employee Total wage daily wage and days is ${empdailywage[@]}"
+
+
 
