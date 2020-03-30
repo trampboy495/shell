@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash 
 
 
 
@@ -76,14 +76,17 @@ best=1000; bestmove=0; depth=0
 local -i p
 minimax $c $h $isMax  
 B[bestmove]=$c
+[[ $best -eq -10 ]] && { echo "computer won" ; exit; }
 isMax=1
 else
 showBoard; read -p "choose cell you wish to mark:  " r
 B[r]=$h
+ret=$(evaluate $h $r)
+[[ ret -eq 10 ]] && { echo "player won" ; exit; }
 isMax=0
 fi
 getAllmoves
 done
 }
 playTictactoe
-
+echo "it's a tie"
